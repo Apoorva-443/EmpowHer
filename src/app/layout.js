@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import "@/styles/globals.css"  // Changed path
+import "./globals.css"  // Changed path
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 
