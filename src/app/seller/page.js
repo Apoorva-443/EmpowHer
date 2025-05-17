@@ -1,7 +1,8 @@
+"use client"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { ArrowRight, ShoppingBag, Tag, TrendingUp } from "lucide-react"
 import Image from "next/image"
 

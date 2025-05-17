@@ -1,8 +1,5 @@
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+"use client"
 import Link from "next/link"
-import { ArrowRight, Video, Users, Star } from "lucide-react"
 
 export default function MentorPage() {
   const mentorChannels = [
