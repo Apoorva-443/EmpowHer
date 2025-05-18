@@ -115,7 +115,7 @@ function ThemeSwitcher({ theme, setTheme }) {
 			className="rounded-full p-2 bg-gradient-to-tr from-yellow-400 to-pink-500 shadow-lg text-white"
 			onClick={() => setTheme(theme === "light" ? "dark" : "light")}
 		>
-			{theme === "light" ? "🌙" : "☀️"}
+			{theme === "light" ? "🌙" : "☀"}
 		</button>
 	);
 }
@@ -171,182 +171,203 @@ export default function ProductPage() {
 							className="text-2xl cursor-pointer"
 							title="Shopping Bag"
 						>
-							🛍️
+							🛍
 						</span>
 					</div>
 				</div>
 			</header>
 			<main className="flex-1">
-				<section className="py-12 text-center">
-					<h1 className="text-4xl font-extrabold mb-2 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+				<section className="py-12 mb-10 text-center">
+					<h1 className="text-4xl font-extrabold mb-8 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
 						Explore Categories
 					</h1>
 					<div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 max-w-4xl mx-auto">
-						{[
-							{ name: "Handicrafts", icon: "🧶" },
-							{ name: "Clothing", icon: "👕" },
-							{ name: "Jewelry", icon: "💍" },
-							{ name: "Home Decor", icon: "🏠" },
-							{ name: "Food", icon: "🍲" },
-						].map((cat) => (
-							<div
-								key={cat.name}
-								className="bg-white/10 rounded-xl p-4 flex flex-col items-center shadow hover:scale-105 transition cursor-pointer"
-							>
-								<span className="text-2xl mb-2">{cat.icon}</span>
-								<span className="font-semibold">{cat.name}</span>
-							</div>
-						))}
-					</div>
+
+                        {[
+                            { name: "Handicrafts", icon: "🧶" },
+                            { name: "Clothing", icon: "👕" },
+                            { name: "Jewelry", icon: "💍" },
+                            { name: "Home Decor", icon: "🏠" },
+                            { name: "Food", icon: "🍲" },
+                        ].map((cat) => (
+                            <div
+                                key={cat.name}
+                                className={`${theme === "dark" ? "bg-[#273148]" : "bg-white/60"} rounded-xl p-4 flex flex-col items-center shadow hover:scale-105 transition cursor-pointer`}
+                            >
+                                <span className="text-2xl mb-2">{cat.icon}</span>
+                                <span className="font-semibold">{cat.name}</span>
+                            </div>
+                        ))}
+                    </div>
 					{/* Filters and Search */}
-					<div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto">
+					<div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
 						{/* Filters */}
-						<aside className="bg-white/10 rounded-xl p-6 w-full md:w-64 mb-4 md:mb-0">
-							<div className="mb-4">
-								<label className="block mb-1 font-semibold">
-									Category
-								</label>
-								<select className="w-full rounded p-2 bg-white/20 text-white">
-									<option>All Categories</option>
-									<option>Handicrafts</option>
-									<option>Clothing</option>
-									<option>Jewelry</option>
-									<option>Home Decor</option>
-									<option>Food</option>
-								</select>
-							</div>
-							<div className="mb-4">
-								<label className="block mb-1 font-semibold">
-									Price Range
-								</label>
-								<input
-									type="range"
-									min="0"
-									max="5000"
-									className="w-full"
-								/>
-								<div className="flex justify-between text-xs mt-1">
-									<span>₹0</span>
-									<span>₹5000</span>
-								</div>
-							</div>
-							<div className="mb-4">
-								<label className="block mb-1 font-semibold">
-									Sort By
-								</label>
-								<select className="w-full rounded p-2 bg-white/20 text-white">
-									<option>Newest First</option>
-									<option>Price: Low to High</option>
-									<option>Price: High to Low</option>
-								</select>
-							</div>
-							<div className="mb-4">
-								<label className="block mb-1 font-semibold">
-									Shipping Options
-								</label>
-								<div>
-									<label className="flex items-center gap-2">
-										<input
-											type="checkbox"
-											className="accent-pink-500"
-										/>{" "}
-										Local Pickup
-									</label>
-									<label className="flex items-center gap-2">
-										<input
-											type="checkbox"
-											className="accent-pink-500"
-											defaultChecked
-										/>{" "}
-										Domestic Shipping
-									</label>
-									<label className="flex items-center gap-2">
-										<input
-											type="checkbox"
-											className="accent-pink-500"
-										/>{" "}
-										International Shipping
-									</label>
-								</div>
-							</div>
-							<button className="w-full mt-2 px-4 py-2 rounded bg-pink-500 text-white font-semibold">
-								Reset Filters
-							</button>
-						</aside>
-						{/* Product Grid */}
-						<section className="flex-1">
-							<div className="flex items-center mb-4 gap-2">
-								<input
-									type="text"
-									placeholder="Search products..."
-									className="flex-1 rounded px-3 py-2 bg-white/20 text-white"
-								/>
-								{/* Voice and Image Search Icons */}
-								<button
-									className="p-2 rounded-full bg-white/20 text-xl text-pink-500 hover:bg-pink-100"
-									title="Voice Search"
-								>
-									<span role="img" aria-label="Voice Search">🎤</span>
-								</button>
-								<button
-									className="p-2 rounded-full bg-white/20 text-xl text-pink-500 hover:bg-pink-100"
-									title="Image Search"
-								>
-									<span role="img" aria-label="Image Search">📷</span>
-								</button>
-								<button className="px-3 py-2 rounded bg-pink-500 text-white font-semibold">
-									Search
-								</button>
-							</div>
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-								{products.map((product) => (
-									<div
-										key={product.id}
-										className="bg-white/10 rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition"
-										onClick={() => setSelectedProduct(product)}
-									>
-										<div className="relative">
-											<img
-												src={product.img}
-												alt={product.name}
-												className="w-full h-48 object-cover"
-											/>
-											{product.featured && (
-												<span className="absolute top-2 right-2 bg-purple-500 text-white text-xs px-3 py-1 rounded-full">
-													Featured
-												</span>
-											)}
-										</div>
-										<div className="p-4">
-											<span className="bg-yellow-200 text-yellow-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">
-												{product.category}
-											</span>
-											<h3 className="font-bold text-lg mb-1">
-												{product.name}
-											</h3>
-											<p className="text-sm mb-2">
-												{product.desc}
-											</p>
-											<div className="flex items-center justify-between">
-												<span className="text-pink-400 font-bold text-lg">
-													₹{product.price}.00
-												</span>
-												<button
-													className="px-3 py-1 rounded bg-pink-500 text-white text-sm font-semibold"
-													onClick={(e) => {
-														e.stopPropagation();
-														setShowSignIn(true);
-													}}
-												>
-													Add
-												</button>
-											</div>
-										</div>
-									</div>
-								))}
-							</div>
-						</section>
-					</div>
+						<aside className={`rounded-xl p-6 w-full md:w-64 mb-4 md:mb-0 ${
+        theme === "dark" ? "bg-[#273148]" : "bg-white/60"
+    }`}>
+        <div className="mb-4">
+            <label className={`block mb-1 font-semibold ${
+                theme === "dark" ? "text-gray-200" : "text-gray-700"
+            }`}>
+                Category
+            </label>
+            <select className={`w-full rounded p-2 ${
+                theme === "dark" 
+                    ? "bg-[#0a1026] text-gray-200" 
+                    : "bg-white/20 text-gray-700"
+            }`}>
+                <option>All Categories</option>
+                <option>Handicrafts</option>
+                <option>Clothing</option>
+                <option>Jewelry</option>
+                <option>Home Decor</option>
+                <option>Food</option>
+            </select>
+        </div>
+        <div className="mb-4">
+            <label className={`block mb-1 font-semibold ${
+                theme === "dark" ? "text-gray-200" : "text-gray-700"
+            }`}>
+                Price Range
+            </label>
+            <input
+                type="range"
+                min="0"
+                max="5000"
+                className="w-full"
+            />
+            <div className={`flex justify-between text-xs mt-1 ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+            }`}>
+                <span>₹0</span>
+                <span>₹5000</span>
+            </div>
+        </div>
+        <div className="mb-4">
+            <label className={`block mb-1 font-semibold ${
+                theme === "dark" ? "text-gray-200" : "text-gray-700"
+            }`}>
+                Sort By
+            </label>
+            <select className={`w-full rounded p-2 ${
+                theme === "dark" 
+                    ? "bg-[#0a1026] text-gray-200" 
+                    : "bg-white/20 text-gray-700"
+            }`}>
+                <option>Newest First</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+            </select>
+        </div>
+        <div className="mb-4">
+            <label className={`block mb-1 font-semibold ${
+                theme === "dark" ? "text-gray-200" : "text-gray-700"
+            }`}>
+                Shipping Options
+            </label>
+            <div>
+                <label className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        className="accent-pink-500"
+                    />{" "}
+                    Local Pickup
+                </label>
+                <label className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        className="accent-pink-500"
+                        defaultChecked
+                    />{" "}
+                    Domestic Shipping
+                </label>
+                <label className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        className="accent-pink-500"
+                    />{" "}
+                    International Shipping
+                </label>
+            </div>
+        </div>
+        <button className="w-full mt-2 px-4 py-2 rounded bg-pink-500 text-white font-semibold">
+            Reset Filters
+        </button>
+    </aside>
+    {/* Product Grid */}
+    <section className="flex-1">
+      <div className="flex items-center mb-10 gap-2">
+        <input
+          type="text"
+          placeholder="Search products..."
+          className="flex-1 rounded px-3 py-2 bg-white/90 text-gray-700"
+        />
+        {/* Voice and Image Search Icons */}
+        <button
+          className="p-2 rounded-full bg-white/20 text-xl text-pink-100 hover:bg-pink-200"
+          title="Voice Search"
+        >
+          <span role="img" aria-label="Voice Search">🎤</span>
+        </button>
+        <button
+          className="p-2 rounded-full bg-white/20 text-xl text-pink-100 hover:bg-pink-200"
+          title="Image Search"
+        >
+          <span role="img" aria-label="Image Search">📷</span>
+        </button>
+        <button className="px-3 py-2 rounded bg-pink-500 text-white font-semibold">
+          Search
+        </button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="bg-white/10 rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition"
+            onClick={() => setSelectedProduct(product)}
+          >
+            <div className="relative">
+              <img
+                src={product.img}
+                alt={product.name}
+                className="w-full h-48 object-cover"
+              />
+              {product.featured && (
+                <span className="absolute top-2 right-2 bg-purple-500 text-white text-xs px-3 py-1 rounded-full">
+                  Featured
+                </span>
+              )}
+            </div>
+            <div className="p-4">
+              <span className="bg-yellow-200 text-yellow-800 text-xs px-2 py-1 rounded-full mb-2 inline-block">
+                {product.category}
+              </span>
+              <h3 className="font-bold text-lg mb-1">
+                {product.name}
+              </h3>
+              <p className="text-sm mb-2">
+                {product.desc}
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-pink-400 font-bold text-lg">
+                  ₹{product.price}.00
+                </span>
+                <button
+                  className="px-3 py-1 rounded bg-pink-500 text-white text-sm font-semibold"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowSignIn(true);
+                  }}
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
 				</section>
 			</main>
 			{/* Product Detail Modal */}
