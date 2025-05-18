@@ -53,13 +53,12 @@ export default function Home() {
               <span className="font-semibold hidden sm:block">Profile</span>
             </div>
             {/* About and Contact buttons */}
-            <button
-              onClick={() => setPopup("about")}
+            <Link
+              href="/about"
               className="hover:text-pink-400 font-semibold focus:outline-none"
-              type="button"
             >
               About
-            </button>
+            </Link>
             <button
               onClick={() => setPopup("contact")}
               className="hover:text-pink-400 font-semibold focus:outline-none"
@@ -83,7 +82,7 @@ export default function Home() {
             >
               ×
             </button>
-            {popup === "about" && (
+            {/* {popup === "about" && (
               <>
                 <h3 className="text-lg font-bold mb-4 text-pink-600 text-center">Developers</h3>
                 <ul className="space-y-2 text-center">
@@ -93,7 +92,7 @@ export default function Home() {
                   <li>Nithinkumar S N</li>
                 </ul>
               </>
-            )}
+            )} */}
             {popup === "contact" && (
               <>
                 <h3 className="text-lg font-bold mb-4 text-pink-600 text-center">Contact Us</h3>
@@ -248,7 +247,7 @@ export default function Home() {
             <h4 className="font-bold mb-2 text-white">Quick Links</h4>
             <ul className="space-y-1">
               <li>
-                <Link href="/" className="hover:text-pink-400 transition">Home</Link>
+                <Link href="/about" className="hover:text-pink-400 transition">Home</Link>
               </li>
               <li>
                 <button
