@@ -146,7 +146,10 @@ export default function MentorPage() {
                   <button onClick={() => handleAuthAction("settings")} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left">
                     Settings
                   </button>
-                  <button onClick={() => setShowAnalytics(true)} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left">
+                  <button
+                    onClick={() => router.push("/mentor/channel-analytics")}
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                  >
                     Channel Analytics
                   </button>
                 </div>
@@ -191,7 +194,7 @@ export default function MentorPage() {
           {activeSection === "uploadedVideos" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {mentorVideos.map((video) => (
-                <div key={video.id} className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-start">
+                <div key={video.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-start text-gray-900 dark:text-white">
                   <div className="w-full h-40 bg-gray-200 rounded-lg mb-4">
                     {/* Video thumbnail placeholder */}
                   </div>
@@ -216,7 +219,7 @@ export default function MentorPage() {
           )}
 
           {activeSection === "uploadNewVideo" && (
-            <form className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <form className="max-w-lg mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-gray-900 dark:text-white">
               <h2 className="text-2xl font-bold mb-4 text-pink-600">Upload New Video</h2>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -269,7 +272,7 @@ export default function MentorPage() {
       {/* Login Modal */}
       {showLoginModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-sm w-full p-8">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg max-w-sm w-full p-8 text-gray-900 dark:text-white">
             <p className="mb-4 text-gray-600 text-center">Please log in to access this feature.</p>
             <div className="flex gap-4">
               <button
@@ -292,7 +295,7 @@ export default function MentorPage() {
       {/* Profile Modal */}
       {showProfileModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full text-gray-900 dark:text-white">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-pink-600">Mentor Profile</h2>
               <button
@@ -347,7 +350,7 @@ export default function MentorPage() {
       {/* Sign In Modal */}
       {showSignIn && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-sm w-full text-gray-900 relative">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-sm w-full text-gray-900 dark:text-white relative">
             <button
               className="absolute top-3 right-3 text-xl text-gray-400 hover:text-pink-500"
               onClick={() => setShowSignIn(false)}
@@ -368,7 +371,7 @@ export default function MentorPage() {
       {/* Sign Up Modal */}
       {showSignUp && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-sm w-full text-gray-900 relative">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-sm w-full text-gray-900 dark:text-white relative">
             <button
               className="absolute top-3 right-3 text-xl text-gray-400 hover:text-pink-500"
               onClick={() => setShowSignUp(false)}
@@ -388,4 +391,3 @@ export default function MentorPage() {
     </div>
   );
 }
-
