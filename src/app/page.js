@@ -29,6 +29,7 @@ function ThemeSwitcher({ theme, setTheme }) {
 
 export default function Home() {
   const [theme, setTheme] = useState("dark");
+  const [popup, setPopup] = useState(""); // "about", "contact", or ""
 
   return (
     <div className={theme === "dark" ? "bg-[#0a1026] text-white" : "bg-white text-gray-900"}>
@@ -43,9 +44,7 @@ export default function Home() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-8">
-            <Link href="#" className="hover:text-pink-400 font-semibold">Details</Link>
-            <Link href="#" className="hover:text-pink-400 font-semibold">About</Link>
-            <Link href="#" className="hover:text-pink-400 font-semibold">Contact</Link>
+            {/* (empty or remove this nav if not needed) */}
           </nav>
           <div className="flex items-center gap-4">
             <ThemeSwitcher theme={theme} setTheme={setTheme} />
@@ -53,9 +52,61 @@ export default function Home() {
               <span className="bg-white text-pink-600 rounded-full w-7 h-7 flex items-center justify-center font-bold">E</span>
               <span className="font-semibold hidden sm:block">Profile</span>
             </div>
+            {/* About and Contact buttons */}
+            <button
+              onClick={() => setPopup("about")}
+              className="hover:text-pink-400 font-semibold focus:outline-none"
+              type="button"
+            >
+              About
+            </button>
+            <button
+              onClick={() => setPopup("contact")}
+              className="hover:text-pink-400 font-semibold focus:outline-none"
+              type="button"
+            >
+              Contact
+            </button>
           </div>
         </div>
       </header>
+
+      {/* Popup */}
+      {popup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-white text-gray-900 rounded-2xl shadow-2xl p-8 max-w-xs w-full relative">
+            <button
+              className="absolute top-2 right-3 text-xl text-gray-400 hover:text-pink-500"
+              onClick={() => setPopup("")}
+              aria-label="Close"
+              type="button"
+            >
+              ×
+            </button>
+            {popup === "about" && (
+              <>
+                <h3 className="text-lg font-bold mb-4 text-pink-600 text-center">Developers</h3>
+                <ul className="space-y-2 text-center">
+                  <li>Apoorva D</li>
+                  <li>Shabarish B L</li>
+                  <li>Hithesh K</li>
+                  <li>Nithinkumar S N</li>
+                </ul>
+              </>
+            )}
+            {popup === "contact" && (
+              <>
+                <h3 className="text-lg font-bold mb-4 text-pink-600 text-center">Contact Us</h3>
+                <div className="space-y-2 text-center text-sm">
+                  <div>Email: <a href="mailto:empowher@gmail.com" className="text-pink-600 underline">empowher@gmail.com</a></div>
+                  <div>Phone: <a href="tel:+919999999999" className="text-pink-600 underline">+91 99999 99999</a></div>
+                  <div>Instagram: <a href="https://instagram.com/empowher" target="_blank" rel="noopener" className="text-pink-600 underline">@empowher</a></div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Hero */}
       <main className="relative z-10">
@@ -164,30 +215,97 @@ export default function Home() {
 
         {/* Join Community */}
         <section className="py-16 text-center">
-
           <div className="max-w-3xl mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-16 shadow-2xl">
-
-
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white drop-shadow-lg">
               Ready to Join Our Community?
             </h2>
             <p className={`mb-6 ${theme === "dark" ? "text-white/90" : "text-gray-900"}`}>
               Connect with like-minded women, access exclusive resources, and take your career to the next level.
             </p>
-            <Link href="#" className="px-8 py-3 rounded-full bg-white text-pink-600 font-bold shadow-lg hover:bg-pink-100 transition">
-              Sign Up Now
+            {/* Changed button to Explore and redirect to /product */}
+            <Link href="/product" className="px-8 py-3 rounded-full bg-white text-pink-600 font-bold shadow-lg hover:bg-pink-100 transition">
+              -- Explore --
             </Link>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-8 mt-10 text-center text-white/60 relative z-10">
-        <p>© 2024 EmpowHer. All rights reserved.</p>
-        <div className="absolute right-6 bottom-6">
-          
-          
-                  </div>
+      <footer className="bg-[#232b39] border-t border-white/10 pt-12 pb-6 mt-10 text-white/80 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10 text-left">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center mb-3">
+              <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg mr-2">E</span>
+              <span className="text-xl font-bold">EMPOWHER</span>
+            </div>
+            <p className="text-sm text-white/60">
+              Empowering women to achieve their professional goals through community, resources, and opportunities.
+            </p>
+          </div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold mb-2 text-white">Quick Links</h4>
+            <ul className="space-y-1">
+              <li>
+                <Link href="/" className="hover:text-pink-400 transition">Home</Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => setPopup("about")}
+                  className="hover:text-pink-400 transition bg-transparent border-none p-0 m-0 text-left cursor-pointer font-inherit"
+                  type="button"
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-pink-400 transition">Services</Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => setPopup("contact")}
+                  className="hover:text-pink-400 transition bg-transparent border-none p-0 m-0 text-left cursor-pointer font-inherit"
+                  type="button"
+                >
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+          {/* Resources */}
+          <div>
+            <h4 className="font-bold mb-2 text-white">Resources</h4>
+            <ul className="space-y-1">
+              <li><Link href="/blog" className="hover:text-pink-400 transition">Blog</Link></li>
+              <li><Link href="/podcast" className="hover:text-pink-400 transition">Podcast</Link></li>
+              <li><Link href="/events" className="hover:text-pink-400 transition">Events</Link></li>
+              <li><Link href="/faq" className="hover:text-pink-400 transition">FAQ</Link></li>
+            </ul>
+          </div>
+          {/* Connect */}
+          <div>
+            <h4 className="font-bold mb-2 text-white">Connect</h4>
+            <ul className="space-y-1">
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noopener" className="hover:text-pink-400 transition">Facebook</a>
+              </li>
+              <li>
+                <a href="https://twitter.com" target="_blank" rel="noopener" className="hover:text-pink-400 transition">Twitter</a>
+              </li>
+              <li>
+                <a href="https://instagram.com/empowher" target="_blank" rel="noopener" className="hover:text-pink-400 transition">Instagram</a>
+              </li>
+              <li>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" className="hover:text-pink-400 transition">LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr className="my-8 border-white/10" />
+        <div className="text-center text-xs text-white/40">
+          © 2025 EMPOWHER. All rights reserved.
+        </div>
       </footer>
     </div>
   );
