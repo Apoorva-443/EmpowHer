@@ -1,25 +1,15 @@
-"use client";
-import { useState } from "react";
-
 export default function SignIn({ onSignUp, onClose, onSuccess }) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     return (
         <div className="flex flex-col gap-6">
             <h2 className="text-2xl font-bold text-center">Sign In</h2>
             <input
                 type="email"
                 placeholder="Email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
                 className="rounded px-3 py-2 border border-gray-300"
             />
             <input
                 type="password"
                 placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
                 className="rounded px-3 py-2 border border-gray-300"
             />
             <button
